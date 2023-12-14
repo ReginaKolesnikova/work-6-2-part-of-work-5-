@@ -1,0 +1,126 @@
+﻿#3
+#is not done
+#Используйте значения чисел в списке и создайте гистограмму, используя звезды
+#******************
+#*******************
+#********************************
+#*****************************************
+#****************************************************
+#************
+
+
+#4 Postiindex
+
+#В Эстонии почтовые индексы состоят из 5 цифр, первая цифра из которых указывает уезд:
+
+#    1 – Таллинн
+#    2 – Нарва, Нарва-Йыэсуу
+#    3 – Кохтла-Ярве
+#    4 – Ида-Вирумаа, Ляэне-Вирумаа, Йыгевамаа
+#    5 – город Тарту
+#    6 – Тартуммаа, Пылвамаа, Выруммаа, Валгаммаа
+#    7 – Вильяндимаа, Ярвамаа, Харьюмаа, Рапламаа
+#    8 – Пярнумаа
+#    9 – Ляэнемаа, Хийумаа, Сааремаа
+
+#Напишите программу, которая проверяет введенный индекс:
+#И если почтовый индеск Нарвы, Таллинна и Кохтла-Ярве, то сообщить пользователю "Оставайтесь дома!"
+#в остальных случаях "Носите маски!".
+
+indexid=["Tallinn","Narva, Narva-Jõesuu","Kohtla-Järve","Ida-Virumaa, Lääne-Virumaa, Jõgevamaa","Tartu linn","Tartumaa, Põlvamaa, Võrumaa, Valgamaa","Viljandimaa, Järvamaa, Harjumaa, Raplamaa","Pärnumaa","Läänemaa, Hiiumaa, Saaremaa"]
+while True:
+    try:
+        index=int(input("Sisesta postindex"))#12345
+        if len(str(index))==5: #"12345"
+            break
+    except :
+         print("Viga!")
+print("Indexi analüüs")
+index_list=list(str(index))
+s1=int(index_list[0]) #1->0 Tallinn indexiga 0
+print("Index {0} on {1} piirkonnas".format(index,indexid[s1-1]))
+#VIGA
+# ||
+# \/
+if s1: #s1 shows only "stay home" option
+  print("Stay home!")
+else:
+   print("Wear masks!")
+
+#5 Vahetus
+from random import *
+
+kokku=randint(2,20)
+num_list=[]
+for i in range(kokku):
+    num_list.append(randint(-100,100))
+print(num_list)
+print()
+while True:
+    try:
+        kogus=int(input("Mitu postsioonid vahetada?"))
+        if kogus<=(len(num_list)/2):
+            break
+    except :
+        print("Proovi uuesti!")
+
+for i in range (0,kogus,1):
+    X_tmp = num_list[i]
+    print(str(i)," ", str(num_list[i])," ", str(num_list[(len(num_list)-i)-1]),"\n")
+    print(X_tmp, "\n")
+
+num_list[i] = num_list[(len(num_list)-i)-1]
+num_list[(len(num_list)-i)-1] = X_tmp
+print("\n", num_list)
+
+#6
+#Бесполезные числа
+#поиск «бесполезного» числа на основании списка.
+
+#берет произвольный список чисел
+#находит самое большое из них
+#делит его на длину списка
+#заменяет его в списке результатом деления
+#где может пригодиться подобное значение
+from random import *
+
+kokku=randint(2,20)
+print("kokku järjeldis on: ", kokku,"elementi")
+num_list=[]
+for i in range(kokku):
+    num_list.append(round(random()*1000,2))
+print(num_list)
+max_=max(num_list)
+n=num_list.index(max_)
+print("\t",max_,"positsioonil:",n+1)
+num_list.pop(n)
+max_=max_/len(num_list)
+num_list.insert(n,max_)
+print(num_list)
+
+for i in range(5):
+    print()
+
+#7
+#preobrazovat`
+#sorted
+#reverse
+#программа сортирует список чисел по убыванию/возрастанию их абсолютного значения
+from random import *
+
+print("Ülesanne 7 \n")
+
+numeric = randint(2,20)
+numeric_list=[]
+for i in range(numeric):
+    numeric_list.append(randint(-1000,1000))
+print(numeric_list)
+print()
+print("Len of numeric_list - " + str(len(numeric_list)))
+for i in range(0,numeric,1):
+    numeric_list[i] = abs(numeric_list[i])
+
+numeric_list.sort()
+print(numeric_list)
+numeric_list.sort(reverse=True)
+print(numeric_list)
